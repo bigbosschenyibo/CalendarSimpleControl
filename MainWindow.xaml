@@ -1,0 +1,39 @@
+﻿<Window
+    x:Class="SimpleCalendarControlDemo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SimpleCalendarControlDemo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <DockPanel LastChildFill="True">
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+            <TextBlock DockPanel.Dock="Left" Text="{Binding StringFormat=当年月份:{0:yyyy年M月}, ElementName=calendatControl, Path=MonthValue}" />
+            <TextBlock Text="  或者  " />
+            <TextBlock DockPanel.Dock="Left" Text="{Binding StringFormat={}{0:yyyy年M月}, ElementName=calendatControl, Path=MonthValue}" />
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                <CheckBox Content="周日在前" IsChecked="{Binding ElementName=calendatControl, Path=IsSundayFirstDayOfWeek}" />
+                <Button
+                    x:Name="prevBtn"
+                    Click="prevBtn_Click"
+                    Content="上个月" />
+                <Button
+                    x:Name="todayBtn"
+                    Click="todayBtn_Click"
+                    Content="今天" />
+                <Button
+                    x:Name="nextBtn"
+                    Click="nextBtn_Click"
+                    Content="下个月" />
+            </StackPanel>
+        </DockPanel>
+        <local:CalendarControl
+            x:Name="calendatControl"
+            DockPanel.Dock="Bottom"
+            IsSundayFirstDayOfWeek="False"
+            MonthValue="2022/09/11" />
+    </DockPanel>
+</Window>
